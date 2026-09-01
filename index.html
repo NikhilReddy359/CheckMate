@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Endgame — Chess</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>End<em>game</em></h1>
+  <div class="tagline">A quiet board for a slow game. Play a friend on one screen, or test yourself against the engine.</div>
+</header>
+
+<main>
+  <div class="board-wrap">
+    <div class="board-frame">
+      <div class="board" id="board"></div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="panel">
+      <div class="status-row">
+        <div class="turn-indicator">
+          <span class="turn-dot" id="turnDot"></span>
+          <span id="turnLabel">White to move</span>
+        </div>
+      </div>
+      <div class="status-msg muted" id="statusMsg"></div>
+      <div class="captured-row">
+        <span id="capturedTop"></span>
+      </div>
+      <div class="captured-row">
+        <span id="capturedBottom"></span>
+        <span class="material" id="materialDiff"></span>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>Game</h2>
+      <div class="controls">
+        <button id="newGameBtn" class="primary">New game</button>
+        <button id="undoBtn">Undo</button>
+        <button id="flipBtn">Flip board</button>
+      </div>
+      <div class="field-row">
+        <label for="modeSelect">Mode</label>
+        <select id="modeSelect">
+          <option value="two-player">Two player</option>
+          <option value="ai" selected>Vs. engine</option>
+        </select>
+      </div>
+      <div class="field-row" id="difficultyRow">
+        <label for="difficultySelect">Difficulty</label>
+        <select id="difficultySelect">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="panel moves-panel">
+      <h2>Moves</h2>
+      <div class="move-list" id="moveList"></div>
+    </div>
+  </div>
+</main>
+
+<footer>Click a piece to see its legal moves, then click a highlighted square to play.</footer>
+
+<div class="modal-overlay hidden" id="promoOverlay">
+  <div class="promo-modal">
+    <p>Promote to</p>
+    <div class="promo-options">
+      <button data-piece="Q">♕</button>
+      <button data-piece="R">♖</button>
+      <button data-piece="B">♗</button>
+      <button data-piece="N">♘</button>
+    </div>
+  </div>
+</div>
+
+<script src="engine.js"></script>
+<script src="ai.js"></script>
+<script src="ui.js"></script>
+</body>
+</html>
